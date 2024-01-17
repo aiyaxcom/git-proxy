@@ -21,4 +21,5 @@ exec autossh -4 \
     -M 0 \
     -o "ServerAliveInterval 30" \
     -o "ServerAliveCountMax 3" \
+    -o "StrictHostKeyChecking=no" \
     -NR 0.0.0.0:2222:github.com:22 root@localhost
