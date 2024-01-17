@@ -4,9 +4,9 @@ FROM ubuntu:22.04
 # 避免在构建过程中出现交互式提示
 ARG DEBIAN_FRONTEND=noninteractive
 
-# 更新软件包列表，安装 autossh，并清理缓存以减小镜像体积
+# 更新软件包列表，安装 autossh 和 openssh-server，并清理缓存以减小镜像体积
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends autossh \
+    && apt-get install -y --no-install-recommends autossh openssh-server \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

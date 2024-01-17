@@ -1,10 +1,18 @@
 #!/bin/sh
 
-# 添加 VPN 服务器的主机密钥到 known_hosts 文件
-ssh-keyscan -H ${SSH_HOST} >> /root/.ssh/known_hosts
+# 配置 SSH 服务
+mkdir /var/run/sshd
+echo 'root:password' | chpasswd
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# 启动 SSH 服务
+/usr/sbin/sshd
 
 # 打印 SSH_HOST 的值
 echo "SSH_HOST: ${SSH_HOST}"
+
+# 添加主机密钥到 known_hosts 文件
+ssh-keyscan -H ${SSH_HOST} >> /root/.ssh/known_hosts
 
 # 启动 autossh 以保持隧道连接
 # 以下命令假设您已经有了可用的SSH密钥和隧道配置
