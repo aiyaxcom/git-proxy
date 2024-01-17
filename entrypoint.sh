@@ -12,7 +12,7 @@ echo 'GatewayPorts=yes' >> /etc/ssh/sshd_config
 /usr/sbin/sshd
 
 # 添加主机密钥到 known_hosts 文件
-ssh-keyscan -H "github.com" >> /root/.ssh/known_hosts
+#ssh-keyscan -H "github.com" >> /root/.ssh/known_hosts
 
 # 启动 autossh 以保持隧道连接
 # 以下命令假设您已经有了可用的SSH密钥和隧道配置
