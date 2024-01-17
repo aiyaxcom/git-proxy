@@ -12,13 +12,6 @@ services:
       - /root/.ssh/id_ed25519:/root/.ssh/id_rsa:ro # 将您的私钥文件挂载到容器中
       - /etc/passwd:/etc/passwd:ro # 将宿主机的用户信息挂载到容器中
       - /etc/group:/etc/group:ro # 将宿主机的用户组信息挂载到容器中
-    environment:
-      - SSH_USER=你的用户名
-      - SSH_HOST=vpn服务器地址
-      - SSH_PORT=vpn端口号
-      - LOCAL_PORT=本地端口
-      - REMOTE_HOST=github.com
-      - REMOTE_PORT=22
     ports:
       - 2222:2222
     restart: always # 确保在退出时重新启动
