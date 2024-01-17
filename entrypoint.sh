@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# 添加 VPN 服务器的主机密钥到 known_hosts 文件
+ssh-keyscan -H ${SSH_HOST} >> /root/.ssh/known_hosts
+
 # 打印 SSH_HOST 的值
 echo "SSH_HOST: ${SSH_HOST}"
 
